@@ -1,7 +1,7 @@
 ## Added offline sequence capability
-- Added a `display_node` to show images on `debug_image` topic
-- Added a `read_image_node` to read a sequence of images from a path on device and publish on `image_raw` topic (edit the file to give the path to seq folder)
-- Added a `publish_info_node` to publish camera calibration properties on `camera_info` topic (edit the file to give the path to .yaml file)
+- Added a `display_node.py` to show images on `debug_image` topic
+- Added a `read_image_node.py` to read a sequence of images from a path on device and publish on `image_raw` topic (edit the file to give the path to seq folder)
+- Added a `publish_info_node.py` to publish camera calibration properties on `camera_info` topic (edit the file to give the path to .yaml file)
 - Created a launch file `orb_slam_runcam5.launch` to launch the `orb_slam2_mono` with the required parameters and the `display_node` for RunCam 5 camera
 - Created a launch file `read_img_seq.launch` to launch offline nodes of `read_image_node` and `publish_info_node`
 
