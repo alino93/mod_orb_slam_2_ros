@@ -1,3 +1,40 @@
+## Added offline sequence capability
+- Added a `display_node` to show images on debug_image
+- Added a `read_image_node` to read a sequence of images from a path on device and publish on `image_raw` topic (edit the file to give the path to seq folder)
+- Added a `publish_info_node` to publish camera calibration properties on `camera_info` topic (edit the file to give the path to .yaml file)
+- Created a launch file `orb_slam_runcam5.launch` to launch the `orb_slam2_mono` with the required parameters and the `display_node` for RunCam 5 camera
+- Created a launch file `read_img_seq.launch` to launch offline nodes of `read_image_node` and `publish_info_node`
+
+Run orbslam:
+```
+source /devel/setup.bash
+roslaunch orb_slam2_ros orb_slam2_runcam5.launch
+```
+
+### To Run with Webcam:
+Edit the usb_cam.launch from
+```
+roscd usb_cam
+cd launch
+sudo nano usb_cam-test.launch
+```
+Add these two lines:
+```
+<param name="camera_info_url" value="file:///PATH_TO_CALIBRATION_FILE/cam_calibration.yaml"/>
+<remap from="usb_cam/image_raw" to="/camera/image_raw" />
+<remap from="usb_cam/camera_info" to="/camera/camera_info" />
+```
+Run usb_cam:
+```
+roslaunch usb_cam usb_cam-test.launch
+```
+
+### To Run with Offline sequence:
+```
+roslaunch orb_slam2_ros read_img_seq.launch
+```
+
+### 
 # ORB-SLAM2
 **ORB-SLAM2 Authors:** [Raul Mur-Artal](http://webdiis.unizar.es/~raulmur/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/), [J. M. M. Montiel](http://webdiis.unizar.es/~josemari/) and [Dorian Galvez-Lopez](http://doriangalvez.com/) ([DBoW2](https://github.com/dorian3d/DBoW2)).
 The original implementation can be found [here](https://github.com/raulmur/ORB_SLAM2.git).
