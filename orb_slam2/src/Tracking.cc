@@ -411,7 +411,7 @@ void Tracking::Track()
             }
             else
                 mVelocity = cv::Mat();
-
+            //**********************************************************************************************CHECK OUT THE BELOW LINE
             //mpMapDrawer->SetCurrentCameraPose(mCurrentFrame.mTcw);
 
             // Clean VO matches
