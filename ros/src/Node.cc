@@ -62,7 +62,7 @@ void Node::Init () {
   status_gba_publisher_ = node_handle_.advertise<std_msgs::Bool> (name_of_node_+"/gba_running", 1);
 }
 
-
+// ************************** WE SHOULD ADD OUR UPDATED POSE HERE**************************
 void Node::Update () {
   cv::Mat position = orb_slam_->GetCurrentPosition();
 
